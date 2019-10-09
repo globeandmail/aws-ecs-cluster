@@ -7,7 +7,7 @@ data "template_cloudinit_config" "config" {
 
     content = <<-EOT
       #!/bin/bash
-      echo "ECS_CLUSTER=${aws_ecs_cluster.main.name}" >> /etc/ecs/ecs.config
+      echo "ECS_CLUSTER=${aws_ecs_cluster.cluster.name}" >> /etc/ecs/ecs.config
 
       EOT
   }

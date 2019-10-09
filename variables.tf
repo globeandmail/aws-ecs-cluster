@@ -1,11 +1,6 @@
-# required variables
-#
 variable "cluster_name" {
   description = "Name of the ECS cluster"
 }
-
-# optional variables
-#
 
 variable "ami" {
   description = "Name of the AMI image to use"
@@ -32,15 +27,15 @@ variable "instances_desired" {
   default     = 1
 }
 
-variable "security_groups" {
-  description = "list of security group names"
-  type        = "list"
+variable "security_group_ids" {
+  description = "list of security group IDs"
+  type        = list
   default     = []
 }
 
 variable "subnet_ids" {
-  description = "list of subnet ids. By default takes all subnets from the VPC"
-  type        = "list"
+  description = "list of subnet IDs"
+  type        = list
   default     = []
 }
 
@@ -49,7 +44,13 @@ variable "spot" {
   default     = false
 }
 
-variable "vpc_name" {
-  description = "VPC name. If not set, will default to \"default\""
+variable "vpc_id" {
+  description = "VPC id to use"
   default     = ""
+}
+
+variable "tags" {
+  type        = map
+  description = "AWS tags"
+  default     = {}
 }
